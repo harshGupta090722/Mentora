@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
@@ -20,14 +19,15 @@ function App() {
   return (
     <div>
       <Routes>
+        {/*user routes*/}
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
 
         {/* Other Routes */}
         <Route path="/courses" element={<Courses />} />
         <Route path="/buy/:courseId" element={<Buy />} />
-        <Route path="/purchases" element={<Purchases/>}
+        <Route path="/purchases" element={<Purchases />}
         />
 
         {/* Admin Routes */}

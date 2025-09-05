@@ -63,13 +63,13 @@ export const login = async (req, res) => {
       {
         id: admin._id,
       },
-      config.JWT_ADMIN_PASSWORD,
+      config.jwt.adminPassword,
       { expiresIn: "1d" }
     );
     const cookieOptions = {
       expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day
       httpOnly: true, //  can't be accsed via js directly
-      secure: process.env.NODE_ENV === "production", // true for https only
+      secure: config.nodeEnv === "production", // true for https only
       sameSite: "Strict", // CSRF attacks
     };
     res.cookie("jwt", token, cookieOptions);

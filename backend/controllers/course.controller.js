@@ -134,10 +134,11 @@ export const courseDetails = async (req, res) => {
 
 import Stripe from "stripe";
 import config from "../config.js";
-const stripe = new Stripe(config.STRIPE_SECRET_KEY);
-console.log(config.STRIPE_SECRET_KEY);
+
+const stripe = new Stripe(config.stripeSecretKey);
+
 export const buyCourses = async (req, res) => {
-  const { userId } = req;
+  const userId = req.userId;
   const { courseId } = req.params;
 
   try {
@@ -160,10 +161,16 @@ export const buyCourses = async (req, res) => {
       payment_method_types: ["card"],
     });
 
+    const purchase = await Purchase.create({
+      userId,
+      courseId,
+    });
+
     res.status(201).json({
       message: "Course purchased successfully",
       course,
       clientSecret: paymentIntent.client_secret,
+      purchase,
     });
   } catch (error) {
     res.status(500).json({ errors: "Error in course buying" });

@@ -10,14 +10,14 @@ function userMiddleware(req, res, next) {
   const token = authHeader.split(" ")[1];
 
   try {
-    const decoded = jwt.verify(token, config.JWT_USER_PASSWORD);
+    const decoded = jwt.verify(token, config.jwt.userPassword);
     console.log(decoded);
     req.userId = decoded.id;
 
     next();
   } catch (error) {
-    return res.status(401).json({ errors: "Invalid token or expired" });
     console.log("error in user middleware", error);
+    return res.status(401).json({ errors: "Invalid token or expired" });
   }
 }
 

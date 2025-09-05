@@ -5,6 +5,7 @@ import { z } from "zod";
 import config from "../config.js";
 import { Purchase } from "../models/purchase.model.js";
 import { Course } from "../models/course.model.js";
+
 export const signup = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -59,19 +60,19 @@ export const login = async (req, res) => {
       return res.status(403).json({ errors: "Invalid credentials" });
     }
 
-    // jwt code
+    
     const token = jwt.sign(
       {
         id: user._id,
       },
-      config.JWT_USER_PASSWORD,
+      config.jwt.userPassword,
       { expiresIn: "1d" }
     );
     const cookieOptions = {
-      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day
-      httpOnly: true, //  can't be accsed via js directly
-      secure: process.env.NODE_ENV === "production", // true for https only
-      sameSite: "Strict", // CSRF attacks
+      expires: new Date(Date.now() + 24 * 60 * 60 * 1000), 
+      httpOnly: true, 
+      secure: config.nodeEnv === "production",
+      sameSite: "Strict", 
     };
     res.cookie("jwt", token, cookieOptions);
     res.status(201).json({ message: "Login successful", user, token });

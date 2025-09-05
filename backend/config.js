@@ -1,12 +1,21 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-const JWT_USER_PASSWORD = process.env.JWT_USER_PASSWORD;
-const JWT_ADMIN_PASSWORD = process.env.JWT_ADMIN_PASSWORD;
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
-
-export default {
-  JWT_USER_PASSWORD,
-  JWT_ADMIN_PASSWORD,
-  STRIPE_SECRET_KEY,
+const config = {
+  port: process.env.PORT || 4002,
+  frontendUrl: process.env.FRONTEND_URL,
+  mongoUrl: process.env.MONGO_URL,
+  cloudinary: {
+    cloudName: process.env.cloud_name,
+    apiKey: process.env.api_key,
+    apiSecret: process.env.api_secret,
+  },
+  jwt: {
+    userPassword: process.env.JWT_USER_PASSWORD,
+    adminPassword: process.env.JWT_ADMIN_PASSWORD,
+  },
+  nodeEnv: process.env.NODE_ENV || "development",
+  stripeSecretKey: process.env.STRIPE_SECRET_KEY,
 };
+
+export default config;
