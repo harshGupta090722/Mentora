@@ -172,7 +172,29 @@ mentora/
 
 ## 📸 Screenshots
 
-👉 *(Add screenshots of your app UI here – login, course page, admin dashboard, payment flow, etc.)*
+### 👨‍💼 Admin Side
+- **Dashboard**
+  ![Admin Dashboard](assets/admin-dashboard.png)
+
+- **Create Course**
+  ![Create Course](assets/admin-createCourse.png)
+
+- **My Courses**
+  ![Admin My Courses](assets/admin-MyCourses.png)
+
+### 👤 User Side
+- **Landing Page**
+  ![User Landing Page](assets/user-landing-page.png)
+
+- **Signup**
+  ![User Signup](assets/user-signup.png)
+
+- **Courses**
+  ![User Courses](assets/user-courses.png)
+
+- **Stripe Payment**
+  ![Stripe Payment](assets/user-stripe-payment.png)
+
 
 ---
 
@@ -187,5 +209,3 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 This project is licensed under the **ISC License**.
 
 ---
-
-Would you like me to also create a **badges section** at the top (Node.js, React, MongoDB, Stripe, etc.) so your README looks more professional and GitHub-ready?
