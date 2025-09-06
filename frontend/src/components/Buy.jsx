@@ -42,8 +42,8 @@ function Buy() {
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        if (error?.response?.status === 400) {
-          console.log(error);
+        if (error?.response?.status === 409) {
+          console.log("Hii harsh "+error);
           setError("you have already purchased this course");
           navigate("/courses");
         } else {
