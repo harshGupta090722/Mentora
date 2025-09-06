@@ -37,15 +37,15 @@ function Buy() {
             withCredentials: true, // Include cookies if needed
           }
         );
-        console.log(response.data);
         setCourse(response.data.course);
         setClientSecret(response.data.clientSecret);
         setLoading(false);
       } catch (error) {
         setLoading(false);
         if (error?.response?.status === 400) {
+          console.log(error);
           setError("you have already purchased this course");
-          navigate("/purchases");
+          navigate("/courses");
         } else {
           setError(error?.response?.data?.errors);
         }

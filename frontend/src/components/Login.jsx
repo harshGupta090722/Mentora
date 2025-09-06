@@ -32,7 +32,7 @@ function Login() {
       console.log("Login successful: ", response.data);
       toast.success(response.data.message);
       localStorage.setItem("user", JSON.stringify(response.data));
-      navigate("/");
+      navigate("/courses");
     } catch (error) {
       if (error.response) {
         setErrorMessage(error.response.data.errors || "Login failed!!!");

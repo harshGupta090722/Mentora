@@ -149,7 +149,7 @@ export const buyCourses = async (req, res) => {
     const existingPurchase = await Purchase.findOne({ userId, courseId });
     if (existingPurchase) {
       return res
-        .status(400)
+        .status(404)
         .json({ errors: "User has already purchased this course" });
     }
 
