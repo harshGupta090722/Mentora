@@ -130,8 +130,8 @@ function Courses() {
       </aside>
 
       {/* Main content */}
-      <main className="ml-0 md:ml-64 w-full bg-white p-10">
-        <header className="flex justify-between items-center mb-10">
+      <main className=" w-full bg-white p-10">
+        <header className="flex justify-between items-center ">
           <h1 className="text-xl font-bold">Courses</h1>
           <div className="flex items-center space-x-3">
             <div className="flex items-center">

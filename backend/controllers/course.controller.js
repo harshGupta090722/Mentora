@@ -143,34 +143,30 @@ export const buyCourses = async (req, res) => {
 
   try {
     const course = await Course.findById(courseId);
+
     if (!course) {
       return res.status(404).json({ errors: "Course not found" });
     }
+
     const existingPurchase = await Purchase.findOne({ userId, courseId });
     if (existingPurchase) {
       return res
-        .status(404)
+        .status(409)
         .json({ errors: "User has already purchased this course" });
     }
 
     // stripe payment code goes here!!
     const amount = course.price;
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount,
-      currency: "usd",
+      amount: amount * 100,
+      currency: "inr",
       payment_method_types: ["card"],
     });
-
-    const purchase = await Purchase.create({
-      userId,
-      courseId,
-    });
-
+    console.log("Harsh Generated PaymentIntent:", paymentIntent.id, paymentIntent.client_secret);
     res.status(201).json({
       message: "Course purchased successfully",
       course,
       clientSecret: paymentIntent.client_secret,
-      purchase,
     });
   } catch (error) {
     res.status(500).json({ errors: "Error in course buying" });
