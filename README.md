@@ -153,7 +153,7 @@ mentora/
    npm run dev
    ```
 
-6. Visit app at: [http://localhost:5173](http://localhost:5173)
+6. Visit app at: [Deploy link we added soon !](http://localhost:5173)
 
 ---
 
