@@ -37,15 +37,15 @@ function Buy() {
             withCredentials: true, // Include cookies if needed
           }
         );
+        console.log("Response from backend",response.data);
         setCourse(response.data.course);
         setClientSecret(response.data.clientSecret);
         setLoading(false);
       } catch (error) {
         setLoading(false);
-        if (error?.response?.status === 409) {
-          console.log("Hii harsh "+error);
+        if (error?.response?.status === 400) {
           setError("you have already purchased this course");
-          navigate("/courses");
+          navigate("/purchases");
         } else {
           setError(error?.response?.data?.errors);
         }
@@ -53,6 +53,7 @@ function Buy() {
     };
     fetchBuyCourseData();
   }, [courseId]);
+  
 
   const handlePurchase = async (event) => {
     event.preventDefault();
@@ -84,11 +85,13 @@ function Buy() {
     } else {
       console.log("[PaymentMethod Created]", paymentMethod);
     }
+    console.log("This is your client secret just before the payment",clientSecret)
     if (!clientSecret) {
       console.log("No client secret found");
       setLoading(false);
       return;
     }
+     console.log("Details passed at payment time ",clientSecret)
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -100,6 +103,7 @@ function Buy() {
         },
       });
     if (confirmError) {
+      console.log("Error aagye hai yaha per harsh ",clientSecret)
       setCardError(confirmError.message);
     } else if (paymentIntent.status === "succeeded") {
       console.log("Payment succeeded: ", paymentIntent);

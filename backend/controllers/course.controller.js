@@ -151,20 +151,22 @@ export const buyCourses = async (req, res) => {
     const existingPurchase = await Purchase.findOne({ userId, courseId });
     if (existingPurchase) {
       return res
-        .status(409)
+        .status(400)
         .json({ errors: "User has already purchased this course" });
     }
 
-    // stripe payment code goes here!!
+    // stripe payment 
     const amount = course.price;
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount * 100,
-      currency: "inr",
+      amount: amount,
+      currency: "usd",
       payment_method_types: ["card"],
     });
-    console.log("Harsh Generated PaymentIntent:", paymentIntent.id, paymentIntent.client_secret);
+    console.log("BACKEND DETAILS are given be");
+    console.log("PaymentIntent ID:", paymentIntent.id);
+    console.log("ClientSecret:", paymentIntent.client_secret);
+
     res.status(201).json({
-      message: "Course purchased successfully",
       course,
       clientSecret: paymentIntent.client_secret,
     });
@@ -172,4 +174,4 @@ export const buyCourses = async (req, res) => {
     res.status(500).json({ errors: "Error in course buying" });
     console.log("error in course buying ", error);
   }
-};
+}

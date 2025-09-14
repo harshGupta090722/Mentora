@@ -8,10 +8,8 @@ function adminMiddleware(req, res, next) {
     return res.status(401).json({ errors: "No token provided" });
   }
   const token = authHeader.split(" ")[1];
-  console.log("checking ");
   try {
     const decoded = jwt.verify(token, config.jwt.adminPassword);
-    console.log(decoded);
     req.adminId = decoded.id;
 
     next();
