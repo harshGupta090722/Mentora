@@ -56,45 +56,80 @@ Mentora is a **full-stack course selling web application** built using the **MER
 
 ```
 mentora/
-│── backend/               # Express + MongoDB backend
-│   ├── controllers/       # Handles request logic
+├── frontend/                # React frontend (Vite + Tailwind)
+│   ├── node_modules/
+│   ├── public/
+│   ├── src/
+│   │   ├── admin/           # Admin-related pages
+│   │   │   ├── AdminLogin.jsx
+│   │   │   ├── AdminSignup.jsx
+│   │   │   ├── CourseCreate.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── OurCourses.jsx
+│   │   │   └── UpdateCourse.jsx
+│   │   │
+│   │   ├── assets/          # Static assets (images, logos, etc.)
+│   │   │
+│   │   ├── components/      # Reusable UI components
+│   │   │   ├── Buy.jsx
+│   │   │   ├── Courses.jsx
+│   │   │   ├── Home.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Purchases.jsx
+│   │   │   └── Signup.jsx
+│   │   │
+│   │   ├── utils/           # Utility functions/helpers
+│   │   │
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   │
+│   ├── .env
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── README.md
+│   ├── tailwind.config.js
+│   └── vite.config.js
+│
+├── backend/                 # Node.js + Express backend
+│   ├── controllers/         # Handles request logic
 │   │   ├── admin.controller.js
 │   │   ├── course.controller.js
 │   │   ├── order.controller.js
 │   │   └── user.controller.js
 │   │
-│   ├── middlewares/       # Custom middleware
+│   ├── middlewares/         # Authentication / validation middlewares
 │   │   ├── admin.mid.js
 │   │   └── user.mid.js
 │   │
-│   ├── models/            # Mongoose schemas/models
+│   ├── models/              # Mongoose models (MongoDB schemas)
 │   │   ├── admin.model.js
 │   │   ├── course.model.js
 │   │   ├── order.model.js
 │   │   ├── purchase.model.js
 │   │   └── user.model.js
 │   │
-│   ├── routes/            # API routes
+│   ├── routes/              # API routes
 │   │   ├── admin.route.js
 │   │   ├── course.route.js
 │   │   ├── order.route.js
 │   │   └── user.route.js
 │   │
-│   ├── config.js          # App configuration (DB, env, etc.)
-│   ├── index.js           # Entry point of backend server
-│   ├── .env               # Environment variables
+│   ├── node_modules/
+│   ├── .env
 │   ├── .gitignore
-│   ├── package.json
-│   └── package-lock.json
+│   ├── config.js            # App configuration (DB, server, etc.)
+│   ├── index.js             # App entry point
+│   ├── package-lock.json
+│   └── package.json
 │
-│── frontend/              # React + Vite frontend
-│   ├── src/
-│   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Pages (Home, Courses, Dashboard, etc.)
-│   │   └── utils/         # API calls, helpers
-│   └── public/
-│
-└── README.md              # Project documentation
+└── README.md                # Root documentation
+
 
 ```
 
