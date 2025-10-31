@@ -42,8 +42,6 @@ app.use(
   })
 );
 
-app.options("*", cors());
-
 const port = config.port || 4002;
 const DB_URL = config.mongoUrl;
 
@@ -54,6 +52,7 @@ try {
   console.log(error);
 }
 
+app.options("*", cors());
 
 app.use("/api/v1/course", courseRoute);
 app.use("/api/v1/user", userRoute);
