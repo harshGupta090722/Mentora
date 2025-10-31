@@ -1,5 +1,6 @@
 import { Order } from "../models/order.model.js";
 import { Purchase } from "../models/purchase.model.js";
+import {Course} from "../models/course.model.js"
 
 export const orderData = async (req, res) => {
   const order = req.body;
@@ -27,6 +28,6 @@ export const orderData = async (req, res) => {
     });
   } catch (error) {
     console.log("Error in order: ", error);
-    res.status(500).json({ errors: "Error in order creation" });
+    res.status(500).json({ errors: "Error in order creatinon" });
   }
 };
