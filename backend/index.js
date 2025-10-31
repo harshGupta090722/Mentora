@@ -25,7 +25,7 @@ app.use(
 );
 
 // ✅ CORS Configuration
-const allowedOrigins = ["https://mentora-zeta.vercel.app"]; 
+const allowedOrigins = ["https://mentora-zeta.vercel.app/user/signup"]; 
 
 app.use(
   cors({
