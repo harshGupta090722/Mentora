@@ -24,9 +24,8 @@ app.use(
   })
 );
 
-const allowedOrigins = [
-  "*"               
-];
+// ✅ CORS Configuration
+const allowedOrigins = ["https://mentora-pied.vercel.app"]; 
 
 app.use(
   cors({
@@ -37,11 +36,13 @@ app.use(
         callback(new Error("Not allowed by CORS"));
       }
     },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, 
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+app.options("*", cors());
 
 const port = config.port || 4002;
 const DB_URL = config.mongoUrl;
