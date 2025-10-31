@@ -25,7 +25,7 @@ app.use(
 );
 
 // ✅ CORS Configuration
-const allowedOrigins = ["https://mentora-zeta.vercel.app/user/signup"]; 
+const allowedOrigins = [config.frontendUrl]; 
 
 app.use(
   cors({
@@ -51,8 +51,6 @@ try {
 } catch (error) {
   console.log(error);
 }
-
-app.options("*", cors());
 
 app.use("/api/v1/course", courseRoute);
 app.use("/api/v1/user", userRoute);
