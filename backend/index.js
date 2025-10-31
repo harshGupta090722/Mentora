@@ -25,8 +25,7 @@ app.use(
 );
 
 const allowedOrigins = [
-  "https://mentora-iota.vercel.app/",  
-  "http://localhost:5173",                
+  "*"               
 ];
 
 app.use(
