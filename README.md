@@ -188,7 +188,7 @@ mentora/
    npm run dev
    ```
 
-6. Visit app at: [Deploy link we added soon !](http://localhost:5173)
+6. Visit app at: https://mentora-gamma.vercel.app/
 
 ---
 
